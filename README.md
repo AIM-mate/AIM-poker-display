@@ -1,0 +1,14 @@
+# Poker Display
+Ciao, questo progettino permette di proiettare in tempo reale i bui del torneo di poker di AIM.
+Per usarlo basta scaricare il codice sorgente in un folder e lanciare il file `display.html` con un browser e usarlo come un normale sito web.
+Per aggiornare i bui basta modificare il file `blinds_ev.js` (sono nel primo oggetto che viene creato) e ricaricare la pagina.
+
+Le funzionalità sono le seguenti:
+
+* Il display è responsive, quindi si adatta a qualsiasi schermo
+* Si può far partire il timer con un click sul bottone "Start" (N.B. se lo si clicca di nuova riparte dall'inizio)
+* Si può mettere in pausa il timer con un click (il tempo di fine torneo viene aggiornato)
+* Se si cambiano i bui, il timer viene resettato
+* Se si pulisce lo schermo si resetta tutto
+
+

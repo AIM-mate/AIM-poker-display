@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- Vedi la pagina di Bootstrap -->
+<html lang="it">
+<!-- Intestazione -->
+<head>
+    <!-- Titolo -->
+    <title>
+        Poker AIM
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Icone Bootstrap https://icons.getbootstrap.com/ -->
+    <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
+</head>
+<!--Corpo-->
+<body class="bg-dark text-center">
+    <!-- Navbar centrata-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary sticky-top justify-conten-center">
+        <!--Clear screen-->
+        <div class="mr-auto">
+            <button class="btn btn-danger" id="clearButton">
+                Clear screen
+            </button>
+        </div>
+        <div class="d-flex flex-row justify-conten-center m-auto">
+            <!--Logo-->
+            <div class="p1 align-self-center mx-2"><img src="assets/logo.png" height="35" class="d-inline-block align-top" alt=""></div>
+            <!--Orario-->
+            <div class="p2 mx-2"><h1 class="font-weight-bold text-white" id="time"></h1></div>
+        </div>
+        <!--Blinds Mode Select-->
+        <div class="ml-auto">
+            <select class="custom-select custom-select-sm" id="blindsMode">
+                <option value="base" selected>Tavoli Base</option>
+                <option value="final">Tavolo Finale</option>
+            </select>
+        </div>
+    </nav>
+    <!--Contenuto-->
+    <div class="d-flex flex-column w-100 h-100 bg-dark text-white">
+        <!--Div in alto al centro-->
+        <div class="d-flex p-2 justify-content-around mb-auto">
+            <!--Testo a destra-->
+            <div class="d-flex flex-column">
+                <h1>Start</h1>
+                <h1 id="startTime"></h1>
+            </div>
+            <!--Testo al centro-->
+            <div class="d-flex flex-column">
+                <h1>Next Blind</h1>
+                <h1 id="nextTime"></h1>
+            </div>
+            <!--Testo a sinistra-->
+            <div class="d-flex flex-column">
+                <h1>End</h1>
+                <h1 id="endTime"></h1>
+            </div>
+        </div>
+        <!--Div al centro della pagina-->
+        <div class="container align-items-center m-auto">
+            <!--Header Row-->
+            <div class="row">
+                <!--Elemento Vuoto-->
+                <div class="col p-2"></div>
+                <!--Small Blind-->
+                <div class="col p-2">
+                    <h2 class="align-text-center"d>Small</h2>
+                </div>
+                <!--Big Blind-->
+                <div class="col p-2">
+                    <h2 class="align-text-center">Big</h2>
+                </div>
+            </div>
+            <!--Previous Row-->
+            <div class="row">
+               <!--Column header-->
+               <div class="col p-2">
+                    <h2 class="align-text-center">Previous</h2>
+               </div>
+               <!--Previous Small Blind-->
+               <div class="col p-2">
+                    <h2 class="align-text-center" id="smallBlindPrev"></h2>
+               </div> 
+               <!--Previous Big Blind-->
+               <div class="col p-2">
+                    <h2 class="align-text-center" id="bigBlindPrev"></h2>
+               </div>
+            </div>
+            <!--Current Row-->
+            <div class="row">
+               <!--Column header-->
+               <div class="col p-2">
+                    <h1 style="font-size: 70px;" class="align-text-center">Current</h1>
+               </div>
+               <!--Current Small Blind-->
+               <div class="col p-2">
+                    <h1 style="font-size: 70px;" class="align-text-center" id="smallBlindCurr"></h1>
+               </div> 
+               <!--Current Big Blind-->
+               <div class="col p-2">
+                    <h1 style="font-size: 70px;" class="align-text-center" id="bigBlindCurr"></h1>
+               </div>
+            </div>
+            <!--Next Row-->
+            <div class="row">
+               <!--Column header-->
+               <div class="col p-2">
+                    <h2 class="align-text-center">Next</h2>
+               </div>
+               <!--Next Small Blind-->
+               <div class="col p-2">
+                    <h2 class="align-text-center" id="smallBlindNext"></h4>
+               </div> 
+               <!--Next Big Blind-->
+               <div class="col p-2">
+                    <h2 class="align-text-center" id="bigBlindNext"></h4>
+               </div>
+            </div>
+        </div>
+        <!--Div in basso al centro-->
+        <div class="mt-auto">
+            <!--Bottoni-->
+            <div class="d-flex justify-content-center">
+                <!--Bottone Start-->
+                <button type="button" class="btn btn-primary btn-lg m-2" id="startButton">Start</button>
+                <!--Bottone Pause-->
+                <button type="button" class="btn btn-warning btn-lg m-2" id="pauseButton">Pause</button>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--Script Custom-->
+    <!--TimeDisplay-->
+    <script src="timedisplay.js"></script>
+    <!--Blinds Evolution-->
+    <script src="blinds_ev.js"></script>
+</body>
+</html>
