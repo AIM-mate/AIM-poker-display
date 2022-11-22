@@ -1,0 +1,23 @@
+{
+  "name": "pokerdisplay",
+  "version": "1.0.0",
+  "description": "App to display and manage the blinds during AIM's annual poker tournament",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AIM-mate/poker-display.git"
+  },
+  "author": "Jacopo Stringara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AIM-mate/poker-display/issues"
+  },
+  "homepage": "https://github.com/AIM-mate/poker-display#readme",
+  "devDependencies": {
+    "electron": "^21.3.0"
+  }
+}
