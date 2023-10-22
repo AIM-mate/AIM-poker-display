@@ -1,37 +1,20 @@
 //variables
 
-//blinds array
-blinds = {
-    'base': {
-        0: [10, 20],
-        1: [25, 50],
-        2: [50, 100],
-        3: [100, 200],
-        4: [150, 300],
-        5: [250, 500]
-    },
-    'final': {
-        0: [75, 150],
-        1: [150, 300],
-        2: [300, 600],
-        3: [500, 1000],
-        4: [1000, 2000],
-        5: [2000, 4000]
-    }
-}
+// load the blinds from the blinds.json file
+const blinds = $.ajax({
+    url: "blinds.json",
+    async: false,
+    dataType: 'json'
+}).responseJSON;
 
 //define the start as undefined
 var startTime = undefined;
-
 //define pause time as undefined
 var pauseTime = undefined;
-
 //define the end as undefined
 var endTime = undefined;
-
 //define the initial blinds as 0
 var currentBlinds = 0;
-
 //blinds mode
 var blindsMode = "base";
 
@@ -69,6 +52,7 @@ function clearAll() {
     //set the end time to undefined
     endTime = undefined;
 }
+
 //function that given the start time returns the current blind level
 function getBlindLevel() {
     //get the current time
@@ -79,6 +63,12 @@ function getBlindLevel() {
     var blindLevel = Math.floor(timePassed / 1000 / 60 / 15);
     //return the blind level
     return blindLevel;
+}
+
+//function that makes a beep sound
+function beep() {
+    var audio = new Audio('./assets/dj-airhorn-sound-39405.mp3');
+    audio.play();
 }
 
 //buttons and selectors
@@ -153,12 +143,18 @@ $("#clearButton").click(function () {
 setInterval(function () {
 
     //check if the start time is undefined short circuit
-    if (startTime === undefined) { return; }
+    if (startTime === undefined) return;
     //if the pause time is defined short circuit
-    if (pauseTime !== undefined) { return; }
+    if (pauseTime !== undefined) return;
 
     //get the blind level
     var currentBlinds = getBlindLevel();
+    
+    // check if the blind level has changed (use == comparing int and string)
+    if (blinds[blindsMode][currentBlinds][0] == $("#smallBlindCurr").text())
+        return;
+
+    console.log("Blind level changed to " + blinds[blindsMode][currentBlinds][0] + "/" + blinds[blindsMode][currentBlinds][1])
 
     //set the previous blinds
     if (currentBlinds > 0) { //if not zero set them, otherwise leave them be 
@@ -173,6 +169,9 @@ setInterval(function () {
     $("#smallBlindCurr").text(blinds[blindsMode][currentBlinds][0]);
     //set the current big blind text
     $("#bigBlindCurr").text(blinds[blindsMode][currentBlinds][1]);
+
+    // make a sound
+    beep();
 
     //set the next blinds level
     if (currentBlinds < 5) { //if not 6 set them, otherwise set them to 'END'
