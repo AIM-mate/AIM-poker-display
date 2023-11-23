@@ -34,7 +34,7 @@ function clearAll() {
     $("#smallBlindPrev").text("");
     $("#bigBlindPrev").text("");
     //clear the current blinds
-    $("#smallBlindCurr").text("");	
+    $("#smallBlindCurr").text("");
     $("#bigBlindCurr").text("");
     //clear the next blinds
     $("#smallBlindNext").text("");
@@ -44,7 +44,7 @@ function clearAll() {
 
     //clear the pause button text
     $("#pauseButton").text("Pause");
-    
+
     //set the start time to undefined
     startTime = undefined;
     //set the pause time to undefined
@@ -147,9 +147,24 @@ setInterval(function () {
     //if the pause time is defined short circuit
     if (pauseTime !== undefined) return;
 
+    //set the next time
+    //get the time elapsed
+    var timeElapsed = new Date() - startTime;
+    //get the remainder of 15 mins
+    timeElapsed = timeElapsed % (15 * 60 * 1000)
+    //delete the milliseconds
+    timeElapsed = Math.floor(timeElapsed / 1000);
+    //timeRemaining
+    var timeRemaining = 15 * 60 - timeElapsed;
+
+    //set the next time as minutes:seconds
+    $("#nextTime").text(
+        String(Math.floor(timeRemaining / 60)).padStart(2, '0') + ":" + String(timeRemaining % 60).padStart(2, '0')
+    );
+
     //get the blind level
     var currentBlinds = getBlindLevel();
-    
+
     // check if the blind level has changed (use == comparing int and string)
     if (blinds[blindsMode][currentBlinds][0] == $("#smallBlindCurr").text())
         return;
@@ -176,20 +191,6 @@ setInterval(function () {
     //set the next blinds level
     if (currentBlinds < 5) { //if not 6 set them, otherwise set them to 'END'
 
-        //set the next time
-        //get the time elapsed
-        var timeElapsed = new Date() - startTime;
-        //get the remainder of 15 mins
-        timeElapsed = timeElapsed % (15 * 60 * 1000)
-        //delete the milliseconds
-        timeElapsed = Math.floor(timeElapsed / 1000);
-        //timeRemaining
-        var timeRemaining = 15 * 60 - timeElapsed;
-
-        //set the next time as minutes:seconds
-        $("#nextTime").text(
-            String(Math.floor(timeRemaining / 60)).padStart(2, '0') + ":" + String(timeRemaining % 60).padStart(2, '0')
-        );
         //set the next small blind text
         $("#smallBlindNext").text(blinds[blindsMode][currentBlinds + 1][0]);
         //set the big next blind text
